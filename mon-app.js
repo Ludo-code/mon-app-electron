@@ -9,7 +9,6 @@ function createWindow() {
       nodeIntegration: true,
     },
   });
-  //test
 
   // and load the index.html of the app.
   win.loadFile('page/page-acceuil.html');
