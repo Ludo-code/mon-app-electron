@@ -1,7 +1,8 @@
 const { app, BrowserWindow } = require('electron');
 
+//fonction pour crée la fenêtre.
 function createWindow() {
-  // Cree la fenetre du navigateur.
+  //crée la fenêtre du navigateur.
   let win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -10,8 +11,9 @@ function createWindow() {
     },
   });
 
-  // and load the index.html of the app.
+//Je charge ma page d'accueil.
   win.loadFile('page/page-acceuil.html');
 }
 
+//Quand l'app est prête je crée la fenêtre.
 app.whenReady().then(createWindow);
