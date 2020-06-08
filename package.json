@@ -1,6 +1,6 @@
 {
   "name": "mon-app",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Ma première app",
   "main": "mon-app.js",
   "scripts": {
