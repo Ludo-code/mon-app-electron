@@ -1,7 +1,7 @@
 const { app, BrowserWindow, autoUpdater, dialog } = require('electron');
 
 require("update-electron-app")({
-  repo: "github-user/repo",
+  repo: "https://github.com/Ludo-code/mon-app-electron",
   updateInterval: "5 minutes",
   logger: require("electron-log"),
 });
