@@ -1,12 +1,5 @@
 const { app, BrowserWindow, autoUpdater, dialog } = require('electron');
-const path = require("path");
 
-
-require("update-electron-app")({
-  repo: "https://github.com/Ludo-code/mon-app-electron",
-  updateInterval: "5 minutes",
-  logger: require("electron-log"),
-});
 
 const serveur = "https://github.com";
 const url = `${serveur}/Ludo-code/mon-app-electron/${app.getVersion()}`;
@@ -20,7 +13,6 @@ function createWindow() {
     width: 800,
     height: 600,
     frame: false,
-    icon: path.join(__dirname, "images/icones-app/icones_app.png"),
     webPreferences: {
       nodeIntegration: true,
     },
@@ -29,7 +21,12 @@ function createWindow() {
   setInterval(() => {
     autoUpdater.checkForUpdates();
   }, 60000);
-
+require("update-electron-app")({
+  host: "https://github.com",
+  updateInterval: "5 minutes",
+  notifyUser: true,
+  logger: require("electron-log"),
+});
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     const dialogOpts = {
       type: "info",

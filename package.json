@@ -1,13 +1,13 @@
 {
   "name": "multi-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Launcher de mes jeux applications et autres.",
   "main": "multi-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "construct": "electron-packager . MultiApp-test-in-dev --overwrite",
-    "build": "electron-builder build --win --publish never",
+    "build-windows": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
   },
   "repository": {
