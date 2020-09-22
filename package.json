@@ -1,6 +1,6 @@
 {
   "name": "multi-app",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "description": "Launcher de mes jeux applications et autres.",
   "main": "multi-app.js",
   "scripts": {
