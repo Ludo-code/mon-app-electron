@@ -1,6 +1,6 @@
 {
   "name": "multi-app",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Launcher de mes jeux applications et autres.",
   "main": "multi-app.js",
   "scripts": {
@@ -8,7 +8,20 @@
     "start": "electron .",
     "construct": "electron-packager . MultiApp-test-in-dev --overwrite",
     "build-windows": "electron-builder build --win --publish never",
+    "build-linux": "electron-builder build -l --x64 --publish never",
+    "build-all": "electron-builder build -wl --x64 --publish never",
     "deploy": "electron-builder build --win --publish always"
+  },
+  "build": {
+    "appId": "com.Ludo-Code.multi-app",
+    "productName": "Multi-App",
+    "directories": {
+      "output": "builded"
+    },
+    "linux": {
+      "icon": "mon-app/build/icons",
+      "target": ["Appimage"]
+    }
   },
   "repository": {
     "type": "git",
@@ -17,13 +30,13 @@
   "author": "Ludovic",
   "license": "MIT",
   "dependencies": {
-    "electron-log": "^4.2.4",
+    "electron-log": "^4.3.0",
     "electron-updater": "^4.3.5",
     "normalize-package-data": "^2.5.0"
   },
   "devDependencies": {
-    "electron": "^9.3.1",
-    "electron-builder": "^22.8.1",
-    "electron-packager": "^15.1.0"
+    "electron": "^9.4.0",
+    "electron-builder": "^22.9.1",
+    "electron-packager": "^15.2.0"
   }
 }

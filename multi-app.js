@@ -1,12 +1,13 @@
-const { app, BrowserWindow, dialog } = require("electron");
+const { app, BrowserWindow, dialog, Notification } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 
 
+
 let windowPrincipal;
-//fonction pour crée la fenêtre.
+
 function createWindow() {
-  //crée la fenêtre du navigateur.
+
   let win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -15,12 +16,13 @@ function createWindow() {
       nodeIntegration: true,
     },
   });
-//Je charge ma page d'accueil.
+
   win.loadFile('page/page-acceuil.html');
   autoUpdater.checkForUpdates();
 }
 
-//Quand l'app est prête je crée la fenêtre.
+
+
 app.whenReady().then(createWindow);
 
 const sendStatusToWindow = (text) => {
@@ -29,6 +31,7 @@ const sendStatusToWindow = (text) => {
     windowPrincipal.webContents.send("message", text);
   }
 };
+
 
 autoUpdater.on('checking-for-update', () => {
   sendStatusToWindow("Recherche de mise a jour...");
@@ -40,7 +43,7 @@ autoUpdater.on('update-not-available', info => {
   sendStatusToWindow("Aucune mise a jour disponible.");
 });
 autoUpdater.on('error', err => {
-  sendStatusToWindow(`EErreur lors de la mise a jour : ${err.toString()}`);
+  sendStatusToWindow(`Erreur lors de la mise a jour : ${err.toString()}`);
 });
 autoUpdater.on('download-progress', progressObj => {
   sendStatusToWindow(

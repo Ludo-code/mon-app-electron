@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Multi application</title>
+    <link rel="stylesheet" href="../css-util/style.css" />
+  </head>
+  <style>
+  ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  ul.topnav li {float: left;}
+  
+  ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  ul.topnav li a:hover:not(.active) {background-color: #111;}
+  
+  ul.topnav li a.active {background-color: #4CAF50;}
+  
+  ul.topnav li.right {float: right;}
+  
+  @media screen and (max-width: 600px) {
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+  }
+  </style>
+  <body>
+
+    <header id="titlebar">
+      <div id="drag-region">
+
+        <div id="window-title">
+          <span>Multi application</span>
+        </div>
+
+        <div id="window-controls">
+
+          <div class="button" id="min-button">
+            <img class="icon" id="boutonminimiser" src="../images/icones/min-w-20.png" draggable="false" />
+          </div>
+          <div class="button" id="max-button">
+            <img class="icon" id="boutonmaximiser" src="../images/icones/max-w-20.png" draggable="false" />
+          </div>
+          <div class="button" id="restore-button">
+            <img class="icon" id="boutonrestorer" src="../images/icones/restore-w-20.png" draggable="false" />
+          </div>
+          <div class="button" id="close-button">
+            <img class="icon" id="boutonfermer" src="../images/icones/close-w-20.png" draggable="false"/>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="bar-navigation">
+      <ul class="topnav">
+        <li><a href="page-acceuil.html">Accueil</a></li>
+        <li><a href="#news">Nouveautés</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="right"><a class="active" href="#a-propos">À-propos</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <h1>À-propos de cette application : </h1>
+      <br>
+      <h1>Cette application est un lanceur des projets de la communeauté ainsi que mes projets et est a but non lucratif.</h1>
+      <p>Version d'electron : <span id="electron-ver"></span></p>
+    </div>
+    <footer>
+    </footer>
+    <script>require('../javascript-util/render.js')</script>
+  </body>
+</html>
