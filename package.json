@@ -20,14 +20,14 @@
     },
     "linux": {
       "icon": "mon-app/build/icons",
-      "target": ["Appimage"]
+      "target": ["Appimage", "apk"]
     }
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Ludo-code/mon-app-electron.git"
   },
-  "author": "Ludovic",
+  "author": "Ludo-Code <ludovic.berthet9492@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "electron-log": "^4.3.0",
