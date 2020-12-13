@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, Notification } = require("electron");
+const { app, BrowserWindow, dialog, Notificatio, shell } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 
@@ -39,6 +39,15 @@ autoUpdater.on('checking-for-update', () => {
 autoUpdater.on('update-available', info => {
   sendStatusToWindow("Une mise a jour à été trouvé.");
 });
+
+autoUpdater.on('update-available', info => {
+  const dialogmajtrouver = {
+    type: "info",
+    buttons: ["Ok"],
+    title: "Mise a jour d'application",
+    detail: "Une mise a jour à été trouver, le téléchargement à été lancée."
+  }
+});
 autoUpdater.on('update-not-available', info => {
   sendStatusToWindow("Aucune mise a jour disponible.");
 });
@@ -51,7 +60,7 @@ autoUpdater.on('download-progress', progressObj => {
   );
 });
 autoUpdater.on('update-downloaded', info => {
-  sendStatusToWindow("Mise a jour effectuer, redémarrage en cours.");
+  sendStatusToWindow("Mise a jour télécharger.");
 });
 
 autoUpdater.on('update-downloaded', (info, event, releaseNotes, releaseName) => {
@@ -59,7 +68,6 @@ autoUpdater.on('update-downloaded', (info, event, releaseNotes, releaseName) => 
     type: "info",
     buttons: ["Redémarrer", "Plus tard"],
     title: "Mise a jour d'application",
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
     detail: "Une nouvelle version à été télécharger. Redémarrez l'application pour appliquer les mises à jour."
   }
 

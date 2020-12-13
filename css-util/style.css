@@ -16,6 +16,9 @@ h1 {
   line-height: 1.2;
 }
 
+a { color: #d80077; 
+}
+
 p {
   margin-top: 10px;
   color: rgba(255,255,255,0.4);
@@ -170,4 +173,7 @@ body {
 #boutonmaximiser {
   width: 25px;
   height: 25px;
+}
+#listeapropos {
+  margin-left: 30px;
 }

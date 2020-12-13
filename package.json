@@ -20,7 +20,7 @@
     },
     "linux": {
       "icon": "mon-app/build/icons",
-      "target": ["Appimage", "apk"]
+      "target": ["Appimage"]
     }
   },
   "repository": {
