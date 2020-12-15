@@ -1,6 +1,6 @@
 {
   "name": "multi-app",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Launcher de mes jeux applications et autres.",
   "main": "multi-app.js",
   "scripts": {
@@ -19,8 +19,8 @@
       "output": "builded"
     },
     "linux": {
-      "icon": "mon-app/build/icons",
-      "target": ["Appimage"]
+      "icon": "mon-app/build/icons/256x256.png",
+      "target": ["Appimage", "deb"]
     }
   },
   "repository": {

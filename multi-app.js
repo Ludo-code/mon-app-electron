@@ -6,6 +6,7 @@ const log = require("electron-log");
 
 let windowPrincipal;
 
+
 function createWindow() {
 
   let win = new BrowserWindow({
@@ -25,6 +26,8 @@ function createWindow() {
 
 app.whenReady().then(createWindow);
 
+
+
 const sendStatusToWindow = (text) => {
   log.info(text);
   if (windowPrincipal) {
@@ -34,25 +37,26 @@ const sendStatusToWindow = (text) => {
 
 
 autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow("Recherche de mise a jour...");
+  sendStatusToWindow("Recherche de mise a jour...")
 });
 autoUpdater.on('update-available', info => {
-  sendStatusToWindow("Une mise a jour à été trouvé.");
+  sendStatusToWindow("Une mise a jour à été trouvé.")
 });
 
-autoUpdater.on('update-available', info => {
-  const dialogmajtrouver = {
+autoUpdater.on('update-available', (info, event, releaseNotes, releaseName) => {
+  const dialogOptsavailable = {
     type: "info",
-    buttons: ["Ok"],
+    buttons: ["Ok",],
     title: "Mise a jour d'application",
-    detail: "Une mise a jour à été trouver, le téléchargement à été lancée."
+    detail: "Une nouvelle version à été détecter, lancement du téléchargement..."
   }
+  dialog.showMessageBox(dialogOptsavailable)
 });
 autoUpdater.on('update-not-available', info => {
-  sendStatusToWindow("Aucune mise a jour disponible.");
+  sendStatusToWindow("Aucune mise a jour disponible.")
 });
 autoUpdater.on('error', err => {
-  sendStatusToWindow(`Erreur lors de la mise a jour : ${err.toString()}`);
+  sendStatusToWindow(`Erreur lors de la mise a jour : ${err.toString()}`)
 });
 autoUpdater.on('download-progress', progressObj => {
   sendStatusToWindow(
@@ -60,7 +64,7 @@ autoUpdater.on('download-progress', progressObj => {
   );
 });
 autoUpdater.on('update-downloaded', info => {
-  sendStatusToWindow("Mise a jour télécharger.");
+  sendStatusToWindow("Mise a jour télécharger.")
 });
 
 autoUpdater.on('update-downloaded', (info, event, releaseNotes, releaseName) => {
