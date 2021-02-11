@@ -58,6 +58,16 @@ autoUpdater.on('update-not-available', info => {
 autoUpdater.on('error', err => {
   sendStatusToWindow(`Erreur lors de la mise a jour : ${err.toString()}`)
 });
+
+autoUpdater.on('error', (error, info, event, releaseNotes, releaseName) => {
+  const dialogOptserror = {
+    type: "error",
+    buttons: ["Ok",],
+    title: "Mise a jour d'application",
+    detail: `Une nouvelle version à été détecter, mais le téléchargement a écoué \n ${error.toString()}`
+  }
+  dialog.showMessageBox(dialogOptsavailable)
+});
 autoUpdater.on('download-progress', progressObj => {
   sendStatusToWindow(
     `Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}% (${progressObj.transferred} + '/' + ${progressObj.total} + )`
