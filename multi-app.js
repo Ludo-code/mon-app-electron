@@ -1,7 +1,10 @@
-const { app, BrowserWindow, dialog, Notificatio, shell } = require("electron");
+const { app, BrowserWindow, dialog, Notification, shell } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
-
+const Discordrpc = require("discord-rpc");
+const rpc = new Discordrpc.Client({
+  transport: "ipc"
+});
 
 
 let windowPrincipal;
@@ -15,6 +18,7 @@ function createWindow() {
     frame: false,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true
     },
   });
 
@@ -23,9 +27,24 @@ function createWindow() {
 }
 
 
-
 app.whenReady().then(createWindow);
 
+rpc.on("ready", () => {
+  rpc.setActivity({
+    details: "Multi-App",
+    state: "Explore l'application",
+    startTimestamp: new Date(),
+    largeImageKey: "icone_base",
+    largeImageText: "Multi-App",
+    smallImageKey: "icone_base",
+    smallImageText: "Multi-App"
+  });
+  console.log("Rich Presence activé")
+});
+
+rpc.login({
+  clientId: "815205361485217793"
+});
 
 
 const sendStatusToWindow = (text) => {
@@ -64,9 +83,9 @@ autoUpdater.on('error', (error, info, event, releaseNotes, releaseName) => {
     type: "error",
     buttons: ["Ok",],
     title: "Mise a jour d'application",
-    detail: `Une nouvelle version à été détecter, mais le téléchargement a écoué \n ${error.toString()}`
+    detail: `Une erreur est survenu : \n ${error.toString()}`
   }
-  dialog.showMessageBox(dialogOptsavailable)
+  dialog.showMessageBox(dialogOptserror)
 });
 autoUpdater.on('download-progress', progressObj => {
   sendStatusToWindow(

@@ -24,7 +24,6 @@ p {
   color: rgba(255,255,255,0.4);
 }
 
-/* Styling of window frame and titlebar */
 body {
   border: 1px solid #48545c;
   overflow-y: hidden;
@@ -176,4 +175,8 @@ body {
 }
 #listeapropos {
   margin-left: 30px;
+}
+#parametre {
+  width: 15px;
+  height: 15px;
 }

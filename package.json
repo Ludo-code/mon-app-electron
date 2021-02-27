@@ -1,6 +1,6 @@
 {
   "name": "multi-app",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Launcher de mes jeux applications et autres.",
   "main": "multi-app.js",
   "scripts": {
@@ -34,13 +34,15 @@
   "author": "Ludo-Code <ludovic.berthet9492@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "discord-rpc": "^3.2.0",
     "electron-log": "^4.3.0",
     "electron-updater": "^4.3.5",
     "git": "^0.1.5",
+    "mime": "^2.5.2",
     "normalize-package-data": "^2.5.0"
   },
   "devDependencies": {
-    "electron": "^9.4.0",
+    "electron": "^11.3.0",
     "electron-builder": "^22.9.1",
     "electron-packager": "^15.2.0"
   }
